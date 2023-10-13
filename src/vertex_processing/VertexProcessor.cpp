@@ -17,7 +17,6 @@ namespace
     const float VERTEX_DX_DY_CUT = 600; // microns
     const float BDT_cut = 0.6277;
     const float BDT_cut_02 = BDT_cut - 0.2;
-    const float OVERLAPPING = 0.6;         // of 100 percents
     const float VERTEX_CLOSE_BY_X_Y = 100; // microns
     const float VERTEX_CLOSE_BY_Z = 600;   // microns
     const float MAX_IMPACT_PAR = 5;        // microns
@@ -25,11 +24,11 @@ namespace
 
     std::unique_ptr<TMVA::Reader> reader;
 
-    float zdiff;
-    float avg_dau_dir[2];
-    float ndau;
+    float Zdifference;
+    float average[2];
+    float numberOfDaughters;
     float chi2;
-    float pos2;
+    float positionZ;
 }
 
 void VertexProcessor::processVertexesWithML(DetectorVolume &detectorVolume)
@@ -57,25 +56,25 @@ void VertexProcessor::processVertexesWithML(DetectorVolume &detectorVolume)
         vertexesToDelete.push_back(vertex);
 
         chi2 = CalculationAndAlgorithms::calculateChiSquared(newVertex);
-        ndau = (float)newVertex.getDaughterTracksCount();
-        pos2 = (float)newVertex.getZ();
+        numberOfDaughters = (float)newVertex.getDaughterTracksCount();
+        positionZ = (float)newVertex.getZ();
 
-        zdiff = 0;
-        avg_dau_dir[0] = 0;
-        avg_dau_dir[1] = 0;
+        Zdifference = 0;
+        average[0] = 0;
+        average[1] = 0;
 
         for (int t = 0; t < newVertex.getDaughterTracksCount(); t++)
         {
             auto track = newVertex.getDaughterTrack(t);
-            zdiff += (float)track->getZ();
-            avg_dau_dir[0] += (float)track->getTanX();
-            avg_dau_dir[1] += (float)track->getTanY();
+            Zdifference += (float)track->getZ();
+            average[0] += (float)track->getTanX();
+            average[1] += (float)track->getTanY();
         }
 
-        zdiff /= ndau;
-        avg_dau_dir[0] /= ndau;
-        avg_dau_dir[1] /= ndau;
-        zdiff -= pos2;
+        Zdifference /= numberOfDaughters;
+        average[0] /= numberOfDaughters;
+        average[1] /= numberOfDaughters;
+        Zdifference -= positionZ;
 
         auto MVA_value = reader->EvaluateMVA("BDTG");
 
@@ -99,11 +98,11 @@ VertexProcessor::VertexProcessor()
 
     reader = std::make_unique<TMVA::Reader>("!Color:!Silent");
     reader->AddVariable("chi2", &chi2);
-    reader->AddVariable("position[2]", &pos2);
-    reader->AddVariable("ndau", &ndau);
-    reader->AddVariable("avg_dau_pos[2] - position[2]", &zdiff);
-    reader->AddVariable("avg_dau_dir[0]", &avg_dau_dir[0]);
-    reader->AddVariable("avg_dau_dir[1]", &avg_dau_dir[1]);
+    reader->AddVariable("position[2]", &positionZ);
+    reader->AddVariable("numberOfDaughters", &numberOfDaughters);
+    reader->AddVariable("avg_dau_pos[2] - position[2]", &Zdifference);
+    reader->AddVariable("average[0]", &average[0]);
+    reader->AddVariable("average[1]", &average[1]);
 
-    reader->BookMVA("BDTG", "../weights/TMVAClassificationCategory_BDTG.weights.xml");
+    //reader->BookMVA("BDTG", "../weights/TMVAClassificationCategory_BDTG.weights.xml");
 }
