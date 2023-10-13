@@ -1,0 +1,23 @@
+# ninja log v5
+0	1217	1697229415628375304	CMakeFiles/DsTauVertexing.dir/src/main/MainClass.cpp.o	25d8e7b6ee7f4f0a
+26	3721	1697229418132361868	tests/CMakeFiles/vertex_coords_test.dir/__/src/detector/DetectorVolume.cpp.o	6dc7c9e5a0a8e2ad
+1	3896	1697229418308360928	CMakeFiles/DsTauVertexing.dir/src/detector/DetectorVolume.cpp.o	708bc499d7b8971c
+2	4102	1697229418512359836	tests/CMakeFiles/vertex_coords_test.dir/__/src/vertex_search/VertexSearcher.cpp.o	1594f4549a2e2220
+0	4309	1697229418700358831	CMakeFiles/DsTauVertexing.dir/src/vertex_search/VertexSearcher.cpp.o	41684b2641bd5c3a
+0	4843	1697229419256355863	CMakeFiles/DsTauVertexing.dir/src/vertex_processing/VertexProcessor.cpp.o	1b8d5f57e10d6273
+8	5202	1697229419612353963	tests/CMakeFiles/vertex_coords_test.dir/__/src/vertex_processing/VertexProcessor.cpp.o	20b6b9437170dd3e
+0	5402	1697229419812352897	CMakeFiles/DsTauVertexing.dir/src/main/AppLogic.cpp.o	457403ea7d0a083d
+1	5453	1697229419864352619	CMakeFiles/DsTauVertexing.dir/src/downloaders/FedraDownloader.cpp.o	32adfc6ef34c2ce7
+2	5455	1697229419864352619	tests/CMakeFiles/vertex_coords_test.dir/vertex_coords_test.cpp.o	2c3e5d024ab6c30
+1218	5580	1697229419992351936	tests/CMakeFiles/vector_algorithms_test.dir/vector_algorithms_test.cpp.o	94292b3631cab3fd
+4102	6015	1697229420428349615	_deps/googletest-build/googletest/CMakeFiles/gtest_main.dir/src/gtest_main.cc.o	93b44a4ee39e18d9
+3721	6239	1697229420652348423	_deps/googletest-build/googlemock/CMakeFiles/gmock_main.dir/src/gmock_main.cc.o	b2e004da8a0839bf
+5453	6325	1697229420732347998	DsTauVertexing	416cea4dab9c319e
+3896	8895	1697229423304334354	_deps/googletest-build/googlemock/CMakeFiles/gmock.dir/src/gmock-all.cc.o	6a9d0d7bbbec352c
+4309	16068	1697229430476296720	_deps/googletest-build/googletest/CMakeFiles/gtest.dir/src/gtest-all.cc.o	df4b4e968d546d99
+16068	16195	1697229430572296220	lib/libgtest.a	e0d959a956718be1
+16195	16221	1697229430632295908	lib/libgtest_main.a	3c03af3f13839911
+16195	16245	1697229430640295866	lib/libgmock.a	5307ae7ebf403120
+16245	16408	1697229430680295658	lib/libgmock_main.a	99a9205be3681421
+16221	16480	1697229430892294554	tests/vector_algorithms_test	c7e8a87c7256b2fe
+16221	16850	1697229431260292641	tests/vertex_coords_test	135b55cb7d2f7aad

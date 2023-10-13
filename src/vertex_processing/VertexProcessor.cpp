@@ -55,7 +55,7 @@ void VertexProcessor::processVertexesWithML(DetectorVolume &detectorVolume)
         Vertex newVertex = *vertex;
         vertexesToDelete.push_back(vertex);
 
-        chi2 = CalculationAndAlgorithms::calculateChiSquared(newVertex);
+        chi2 = 1;//CalculationAndAlgorithms::calculateChiSquared(newVertex);
         numberOfDaughters = (float)newVertex.getDaughterTracksCount();
         positionZ = (float)newVertex.getZ();
 
